@@ -61,19 +61,5 @@ public static class NodeApiStatusExtensions
         status.ThrowIfFailed(memberName, sourceFilePath, sourceLineNumber);
         return value;
     }
-
-    [StackTraceHidden]
-    public static void ThrowIfFailed([DoesNotReturnIf(true)] this NodeEmbeddingStatus status,
-                                     [CallerMemberName] string memberName = "",
-                                     [CallerFilePath] string sourceFilePath = "",
-                                     [CallerLineNumber] int sourceLineNumber = 0)
-    {
-        if (status == NodeEmbeddingStatus.OK)
-            return;
-        throw new JSException($"""
-            Error in {memberName} at {sourceFilePath}:{sourceLineNumber}
-            {NodeEmbedding.JSRuntime.EmbeddingGetLastErrorMessage()}
-            """);
-    }
 }
 
