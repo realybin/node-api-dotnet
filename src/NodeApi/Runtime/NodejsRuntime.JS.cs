@@ -70,6 +70,7 @@ public unsafe partial class NodejsRuntime
     private delegate* unmanaged[Cdecl]<napi_env, long, nint, napi_status>
         napi_adjust_external_memory;
 
+    [Obsolete("Symbols Not Exported from the Node-API Library")]
     public override napi_status AdjustExternalMemory(
         napi_env env, long changeInBytes, out long result)
     {

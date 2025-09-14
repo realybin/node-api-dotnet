@@ -15,7 +15,7 @@ using static NodejsRuntime;
 /// <remarks>
 /// This is a mid-level API; it is lower level than JSValue and related types and methods, while
 /// it is higher level than the napi_* native functions.
-/// 
+///
 /// This middle layer serves two purposes:
 ///  1. It is used to implement all of the higher level APIs in the library, while encapsulating
 ///     tedious concerns of dynamic function binding, memory pinning, string encoding, etc.
@@ -62,6 +62,7 @@ public abstract partial class JSRuntime
         napi_finalize finalizeCallback,
         nint finalizeHint) => throw NS();
 
+    [Obsolete("Symbols Not Exported from the Node-API Library")]
     public virtual napi_status AdjustExternalMemory(
         napi_env env, long changeInBytes, out long result) => throw NS();
 
